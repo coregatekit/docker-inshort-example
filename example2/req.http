@@ -1,0 +1,36 @@
+@host = http://localhost:3000
+
+###
+GET {{host}} HTTP/1.1
+
+###
+GET {{host}}/users HTTP/1.1
+
+###
+POST {{host}}/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "username": "nobody",
+    "password": "123456"
+}
+
+###
+GET {{host}}/users/6 HTTP/1.1
+
+###
+PATCH {{host}}/users/2
+Content-Type: application/json
+
+{
+    "password": "wendyday123"
+}
+
+###
+DELETE {{host}}/users/6 HTTP/1.1
+Content-Type: application/json
+
+{
+    "password": "123456"
+}

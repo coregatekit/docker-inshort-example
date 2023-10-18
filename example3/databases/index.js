@@ -4,7 +4,7 @@ const waitPort = require("wait-port");
 let pool;
 
 async function init() {
-  const host = "localhost";
+  const host = process.env.MYSQL_HOST || "localhost";
   await waitPort({
     host,
     port: 3306,
@@ -15,9 +15,9 @@ async function init() {
   pool = mysql.createConnection({
     connectionLimit: 5,
     host: host,
-    user: "root",
-    password: "secret_pw",
-    database: "example3",
+    user: process.env.MYSQL_USER || "root",
+    password: process.env.MYSQL_PASS || "secret_pw",
+    database: process.env.MYSQL_DB || "example3",
     charset: "utf8mb4",
   });
 
